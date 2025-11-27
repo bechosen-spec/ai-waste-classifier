@@ -42,6 +42,7 @@ body {
     padding: 25px;
     border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
 }
 
 .prediction-card {
@@ -64,13 +65,13 @@ body {
 # TITLE + DESCRIPTION
 # -----------------------------------------------------------
 st.markdown('<div class="main-title">♻️ AI Waste Classifier</div>', unsafe_allow_html=True)
-st.markdown('<p class="desc">Upload any waste image and let the AI classify it as <b>Recyclable</b>, <b>Biodegradable</b>, or <b>Non-Recyclable</b>.</p>', unsafe_allow_html=True)
+st.markdown('<p class="desc">Upload an image or take a picture, and the AI will classify it as <b>Recyclable</b>, <b>Biodegradable</b>, or <b>Non-Recyclable</b>.</p>', unsafe_allow_html=True)
 
 # -----------------------------------------------------------
 # LOAD MODEL
 # -----------------------------------------------------------
 MODEL_PATH = "waste_model_efficientnet.keras"
-model = tf.keras.models.load_model(MODEL_PATH)
+model = tf.keras.models.load_model(MODEL_PATH, safe_mode=False)
 
 # -----------------------------------------------------------
 # CLASS NAMES + ADVICE
@@ -107,10 +108,23 @@ def preprocess_image(image, img_size=(224, 224)):
     return img_array
 
 # -----------------------------------------------------------
-# FILE UPLOAD BOX
+# FILE UPLOAD + CAMERA INPUT
 # -----------------------------------------------------------
 st.markdown('<div class="upload-box">', unsafe_allow_html=True)
-uploaded_file = st.file_uploader("Upload an image...", type=["jpg", "jpeg", "png"])
+
+tab1, tab2 = st.tabs(["📤 Upload Image", "📷 Take Picture"])
+
+uploaded_file = None
+
+with tab1:
+    uploaded_file = st.file_uploader("Upload an image...", type=["jpg", "jpeg", "png"])
+
+with tab2:
+    camera_file = st.camera_input("Take a picture")
+
+    if camera_file is not None:
+        uploaded_file = camera_file
+
 st.markdown('</div>', unsafe_allow_html=True)
 
 # -----------------------------------------------------------
