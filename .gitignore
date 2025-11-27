@@ -1,0 +1,47 @@
+# -----------------------------
+# PYTHON
+# -----------------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# -----------------------------
+# STREAMLIT
+# -----------------------------
+.streamlit/
+static/
+
+
+
+# Large media files
+*.mp4
+*.mov
+*.avi
+*.zip
+*.tar.gz
+
+# -----------------------------
+# SYSTEM FILES
+# -----------------------------
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/
+
+# PyCharm
+.idea/
+
+# Logs
+*.log
+logs/
