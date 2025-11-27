@@ -21,7 +21,19 @@ env/
 .streamlit/
 static/
 
+# -----------------------------
+# DATASET & MODELS
+# -----------------------------
+/content/dataset/
+/content/drive/
+/dataset/
+/archive/
 
+# model files
+*.h5
+*.hdf5
+*.keras
+*.tflite
 
 # Large media files
 *.mp4
