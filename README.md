@@ -161,9 +161,8 @@ Training was done in Google Colab using:
 
 ## 👨🏾‍💻 Author
 
-**Emmanuel Boniface**
-Machine Learning Research Engineer
-AI | Deep Learning | Computer Vision
+**Prosper Attiah**
+
 
 ---
 
